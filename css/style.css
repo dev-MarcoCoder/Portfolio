@@ -262,6 +262,27 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   color: var(--text-muted);
 }
 
+/* ==========  Projetos  ========== */
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.project {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.project:hover { border-color: var(--accent); transform: translateY(-4px); }
+.project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.project-lang { font-size: 0.75rem; color: var(--accent); }
+.project-link { font-size: 0.75rem; color: var(--text-dim); transition: color 0.2s; }
+.project:hover .project-link { color: var(--accent); }
+.project h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 8px; }
+.project p { font-size: 0.88rem; color: var(--text-muted); flex: 1; margin-bottom: 18px; }
+.projects-more { display: inline-block; margin-top: 24px; font-size: 0.85rem; color: var(--text-muted); transition: color 0.2s; }
+.projects-more:hover { color: var(--accent); }
+
 /* ==========  Certificações  ========== */
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .filter {
@@ -321,7 +342,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   min-width: 0;
   word-break: break-all;
 }
-.contact-link:last-child { grid-column: 1 / -1; }
+.contact-link ~ .contact-link { grid-column: 1 / -1; }
 .contact-link:hover { border-color: var(--accent); }
 .contact-link svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--accent); }
 .contact-link small { display: block; font-size: 0.72rem; color: var(--text-dim); font-family: var(--mono); }
@@ -392,7 +413,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 /* ==========  Responsivo  ========== */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
-  .skills-grid, .certs-grid { grid-template-columns: 1fr 1fr; }
+  .skills-grid, .certs-grid, .projects-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 720px) {
@@ -418,7 +439,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   .nav-links .nav-cta { text-align: center; margin-top: 8px; }
   .header:has(.nav-links.open) { background: var(--bg); border-bottom-color: var(--border); }
 
-  .skills-grid, .certs-grid { grid-template-columns: 1fr; }
+  .skills-grid, .certs-grid, .projects-grid { grid-template-columns: 1fr; }
   .contact-box { padding: 28px 20px; }
   .contact-links { grid-template-columns: 1fr; }
   .copy-btn { padding: 12px; }
