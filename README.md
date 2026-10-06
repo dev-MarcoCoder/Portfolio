@@ -27,5 +27,3 @@ npx serve .
 3. Atualize os números da seção "Sobre" no `index.html` (`data-count`).
 
 ## Publicar
-
-Por ser um site estático, dá para publicar de graça no GitHub Pages, Netlify ou Vercel.
