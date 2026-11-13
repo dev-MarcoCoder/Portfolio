@@ -128,12 +128,26 @@ const modalBody = document.getElementById("modalBody");
 const modalTitle = document.getElementById("modalTitle");
 const modalOpen = document.getElementById("modalOpen");
 
+// Navegadores de celular (ex.: Chrome no Android) não exibem PDF dentro de iframe
+function canEmbedPdf() {
+  return navigator.pdfViewerEnabled !== false &&
+    !window.matchMedia("(max-width: 720px), (pointer: coarse)").matches;
+}
+
 function openModal(cert) {
   modalTitle.textContent = `${cert.title} — ${cert.issuer}`;
   modalOpen.href = cert.file;
-  modalBody.innerHTML = cert.file.endsWith(".pdf")
-    ? `<iframe src="${cert.file}#view=FitH" title="${cert.title}"></iframe>`
-    : `<img src="${cert.file}" alt="Certificado ${cert.title}">`;
+  if (!cert.file.endsWith(".pdf")) {
+    modalBody.innerHTML = `<img src="${cert.file}" alt="Certificado ${cert.title}">`;
+  } else if (canEmbedPdf()) {
+    modalBody.innerHTML = `<iframe src="${cert.file}#view=FitH" title="${cert.title}"></iframe>`;
+  } else {
+    modalBody.innerHTML = `
+      <div class="pdf-fallback">
+        <p>Este certificado está em PDF. Toque no botão para visualizá-lo.</p>
+        <a class="btn btn-primary" href="${cert.file}" target="_blank" rel="noopener">Abrir certificado (PDF)</a>
+      </div>`;
+  }
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -161,17 +175,26 @@ document.addEventListener("keydown", (e) => {
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
 
+function closeMenu() {
+  navLinks.classList.remove("open");
+  navToggle.classList.remove("open");
+  navToggle.setAttribute("aria-expanded", "false");
+}
+
 navToggle.addEventListener("click", () => {
   const open = navLinks.classList.toggle("open");
   navToggle.classList.toggle("open", open);
   navToggle.setAttribute("aria-expanded", open);
 });
 navLinks.addEventListener("click", (e) => {
-  if (e.target.tagName === "A") {
-    navLinks.classList.remove("open");
-    navToggle.classList.remove("open");
-    navToggle.setAttribute("aria-expanded", "false");
-  }
+  if (e.target.tagName === "A") closeMenu();
+});
+// Fecha o menu ao tocar fora dele ou apertar Esc
+document.addEventListener("click", (e) => {
+  if (navLinks.classList.contains("open") && !e.target.closest("#header")) closeMenu();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeMenu();
 });
 
 // ==========  Header ao rolar + link ativo  ==========
