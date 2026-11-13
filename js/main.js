@@ -1,6 +1,42 @@
 // ==========  Dados das certificações  ==========
 const CERTS = [
   {
+    title: "Matemática para Machine Learning",
+    issuer: "Sigmoidal",
+    hours: "8h",
+    date: "Nov 2026",
+    category: "data",
+    desc: "Fundamentos matemáticos por trás do Machine Learning: álgebra linear, cálculo e estatística aplicados a modelos.",
+    file: "assets/certificados/sigmoidal-matematica-ml.png",
+  },
+  {
+    title: "Introdução ao Scrum",
+    issuer: "FGV Online",
+    hours: "6h",
+    date: "Nov 2026",
+    category: "agile",
+    desc: "Princípios do framework Scrum: papéis, eventos, artefatos e gestão ágil de projetos.",
+    file: "assets/certificados/fgv-introducao-scrum.pdf",
+  },
+  {
+    title: "XX Semana de Tecnologia 2026",
+    issuer: "Fatec Ourinhos",
+    hours: "40h",
+    date: "Out 2026",
+    category: "event",
+    desc: "Semana de palestras, minicursos e workshops sobre tendências e práticas da área de tecnologia.",
+    file: "assets/certificados/semana-tecnologia-2026.pdf",
+  },
+  {
+    title: "Hashcat: Introdução e Prática",
+    issuer: "Fatec Ourinhos",
+    hours: "4h",
+    date: "Out 2026",
+    category: "security",
+    desc: "Minicurso prático de auditoria de senhas com Hashcat: tipos de hash, ataques de dicionário e força bruta.",
+    file: "assets/certificados/hashcat.pdf",
+  },
+  {
     title: "Java POO",
     issuer: "Curso em Vídeo",
     hours: "40h",
