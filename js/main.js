@@ -37,6 +37,15 @@ const CERTS = [
     file: "assets/certificados/hashcat.pdf",
   },
   {
+    title: "Monitoria de Algoritmos e Lógica de Programação",
+    issuer: "Fatec Ourinhos",
+    hours: "108h",
+    date: "Ago 2026",
+    category: "dev",
+    desc: "Programa de Monitoria do curso de ADS no 1º semestre de 2026: apoio a alunos em algoritmos, lógica e estrutura de dados.",
+    file: "assets/certificados/monitoria-algoritmos.png",
+  },
+  {
     title: "Java POO",
     issuer: "Curso em Vídeo",
     hours: "40h",
